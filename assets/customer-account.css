@@ -1,0 +1,556 @@
+@keyframes box-shadow {
+    0%,
+    100% {
+        -webkit-box-shadow: 0 0 0 0;
+        -moz-box-shadow: 0 0 0 0;
+        box-shadow: 0 0 0 0;
+    }
+
+    50% {
+        -webkit-box-shadow: 0 0 0 4px;
+        -moz-box-shadow: 0 0 0 4px;
+        box-shadow: 0 0 0 4px;
+    }
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.body-full .login-register-page .container,
+.body-full .account-page .container,
+.body-full .addresses-page .container {
+    max-width: 1200px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.wrapper-header-login {
+    background: #fafafa;
+}
+.wrapper-header-login .container {
+    text-align: center;
+}
+.wrapper-header-login .breadcrumb {
+    background: transparent;
+    padding-top: 37px;
+}
+.wrapper-header-login .title {
+    font-size: var(--font_size_plus28);
+    line-height: 32px;
+    letter-spacing: 0.04em;
+    color: #282828;
+    font-weight: 600;
+    font-family: var(--font_stack_heading);
+    text-transform: capitalize;
+    padding: 15px 0px 52px;
+}
+@media (min-width: 768px) {
+    .login-register-page .grid {
+        padding: 68px 0px 125px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: space-between;
+        -moz-box-pack: space-between;
+        -ms-flex-pack: space-between;
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
+    }
+}
+.login-register-page .create-an-account {
+    background: #fafafa;
+    padding: 48px 50px 50px;
+}
+.login-register-page .create-an-account .button-register .btn {
+    background: #505050;
+    color: #fff;
+    width: 100%;
+    max-width: 271px;
+    margin-top: 6px;
+    margin-bottom: 0px;
+}
+.login-register-page .create-an-account .button-register .btn:hover {
+    color: #505050;
+    background: #fff;
+    border-color: #505050;
+}
+.login-register-page .login-an-account {
+    padding-top: 48px;
+}
+.login-register-page .login-an-account .button-login .btn {
+    background: #505050;
+    color: #fff;
+    width: 100%;
+    max-width: 170px;
+    margin-top: 5px;
+}
+.login-register-page .login-an-account .button-login .btn:hover {
+    color: #505050;
+    background: #fff;
+    border-color: #505050;
+}
+.login-register-page .login-an-account .button-login .forgot-password {
+    margin-top: 6px;
+}
+.login-register-page .login-an-account .button-login .forgot-password a {
+    letter-spacing: 0.04em;
+    line-height: 30px;
+    font-size: var(--font_size);
+    color: #787878;
+}
+.login-register-page .login-an-account .button-login .forgot-password a:hover {
+    color: #ea3b02;
+}
+
+.login-register-page .login-an-account .button-login .forgot-password a.return-store {
+    color: #947d5c;
+    border-bottom: 1px solid;
+}
+
+.login-register-page .login-an-account .button-login .forgot-password a.return-store:hover {
+    color: #ea3b02;
+}
+
+.login-register-page .medium-up--push-one-quarter {
+    left: 0px !important;
+}
+
+.login-register-page .wrapper .box-title h3 {
+    font-size: var(--font_size_plus1);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #323232;
+    margin-bottom: 15px;
+}
+
+.login-register-page .wrapper .des {
+    padding-bottom: 20px;
+    color: #787878;
+}
+
+.login-register-page .wrapper .des p {
+    letter-spacing: 0.02em;
+    font-size: var(--font_size);
+    line-height: 24px;
+    color: #787878;
+    padding-bottom: 4px;
+}
+
+#RecoverPasswordForm .recover-box .box-title h3 {
+    font-size: var(--font_size_plus1);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #323232;
+    margin-bottom: 15px;
+}
+
+#RecoverPasswordForm .recover-box p {
+    letter-spacing: 0.02em;
+    font-size: var(--font_size);
+    line-height: 24px;
+    color: #787878;
+    padding-bottom: 4px;
+    padding-bottom: 20px;
+}
+
+#RecoverPasswordForm .form-vertical .btn-group {
+    margin-top: 30px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+}
+
+#RecoverPasswordForm .form-vertical .btn-group p {
+    margin: 0px;
+}
+
+#RecoverPasswordForm .form-vertical .btn {
+    background: #505050;
+    color: #fff;
+    width: 100%;
+    max-width: 170px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 30px;
+}
+
+#RecoverPasswordForm .form-vertical .btn:hover {
+    color: #505050;
+    background: #fff;
+    border-color: #505050;
+}
+
+
+.account-page .wrapper-header-login .title {
+    padding: 53px 0px 52px;
+}
+
+.account-page .grid {
+    margin-top: 38px;
+}
+
+.account-page .grid .grid__item h2 {
+    font-size: var(--font_size_plus6);
+    text-transform: capitalize;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+    color: #282828;
+    border-bottom: 1px solid #ececec;
+    font-family: var(--font_stack_heading);
+    padding: 23px 0px;
+}
+
+.account-page .grid .myaccount__order-history p {
+    text-align: center;
+    background: #fbf6ee;
+    padding: 10px 0px 8px;
+    letter-spacing: 0.02em;
+    color: #8b714a;
+    margin: 25px 0px 38px;
+}
+
+.account-page .grid .myaccount__account-details {
+    margin-bottom: 90px;
+}
+
+.account-page .grid .myaccount__account-details .account-content {
+    max-width: 270px;
+    margin: 35px 0px 35px;
+    background: #fafafa;
+    padding: 18px 30px 8px;
+}
+
+.account-page .grid .myaccount__account-details .acc-name,
+.account-page .grid .myaccount__account-details .addr p {
+    font-size: var(--font_size);
+    text-transform: capitalize;
+    letter-spacing: 0.04em;
+    line-height: 30px;
+}
+
+.account-page .grid .myaccount__account-details .acc-name {
+    color: #8b714a;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.account-page .grid .myaccount__account-details .addr p {
+    color: #787878;
+    margin-bottom: 0px;
+}
+
+.account-page .grid .myaccount__account-details .btn {
+    background: #505050;
+    color: #fff;
+    width: 100%;
+    max-width: 270px;
+    margin-bottom: 35px;
+}
+
+.account-page .grid .myaccount__account-details .btn:hover {
+    color: #505050;
+    background: #fff;
+    border-color: #505050;
+}
+
+.account-page .grid .myaccount__account-details .btn span {
+    width: 23px;
+    height: 23px;
+    display: inline-table;
+    overflow: hidden;
+    background: #8c8c8c;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    line-height: 23px;
+    padding-left: 3px;
+    margin-left: 3px;
+}
+
+.form-vertical [type="radio"],
+.form-vertical [type="checkbox"] {
+    display: none;
+}
+
+.addresses-page {
+    margin-bottom: 105px;
+}
+
+.addresses-page .wrapper-header-login .title {
+    padding: 54px 0px 52px;
+}
+
+.addresses-page .section-header {
+    margin-top: 65px;
+}
+
+.addresses-page .section-header .btn {
+    background: #505050;
+    color: #fff;
+    width: 100%;
+    max-width: 270px;
+    margin-bottom: 5px;
+}
+
+.addresses-page .section-header .btn:hover {
+    color: #505050;
+    background: #fff;
+    border-color: #505050;
+}
+
+.addresses-page .section-header .return-detail a {
+    font-size: var(--font_size);
+    letter-spacing: 0.04em;
+    line-height: 30px;
+    font-weight: 500;
+    color: #8b714a;
+    border-bottom: 1px solid;
+}
+
+.addresses-page .section-header .return-detail a:hover {
+    color: #ea3b02;
+}
+
+@media (min-width: 768px) {
+    .addresses-page .grid {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: space-between;
+        -moz-box-pack: space-between;
+        -ms-flex-pack: space-between;
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
+    }
+
+    .addresses-page .grid .grid__item:first-child {
+        margin-right: 10px;
+    }
+}
+
+.addresses-page .grid__item .form-vertical .title-add {
+    font-size: var(--font_size_plus6);
+    text-transform: capitalize;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+    color: #282828;
+    border-bottom: 1px solid #ececec;
+    font-family: var(--font_stack_heading);
+    padding: 23px 0px;
+    margin-bottom: 40px;
+}
+
+.addresses-page .grid__item .form-vertical .action-btn {
+    padding: 25px 0px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.addresses-page .grid__item .form-vertical .action-btn .btn {
+    background: #505050;
+    color: #fff;
+    width: 100%;
+    max-width: 170px;
+}
+
+.addresses-page .grid__item .form-vertical .action-btn .btn:hover {
+    color: #505050;
+    background: #fff;
+    border-color: #505050;
+}
+
+.addresses-page .grid__item .form-vertical .action-btn button {
+    display: inline-block;
+    padding: 7px 0 5px 9px;
+    margin-bottom: 0px;
+    vertical-align: middle;
+    margin-top: -19px;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    line-height: 30px;
+    font-weight: 500;
+    color: #8b714a;
+}
+
+.addresses-page .grid__item .form-vertical .action-btn button:hover {
+    color: #ea3b02;
+}
+
+.addresses-page .grid__item .address {
+    margin-bottom: 20px;
+}
+
+.addresses-page .grid__item .address .title-add {
+    font-size: var(--font_size_plus6);
+    text-transform: capitalize;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+    color: #282828;
+    border-bottom: 1px solid #ececec;
+    font-family: var(--font_stack_heading);
+    padding: 25px 0px 23px;
+}
+
+.addresses-page .grid__item .address .account-content {
+    max-width: 270px;
+    margin: 35px 0px 35px;
+    background: #fafafa;
+    padding: 18px 30px 27px;
+}
+
+.addresses-page .grid__item .address .acc-name,
+.addresses-page .grid__item .address .addr p {
+    font-size: var(--font_size);
+    text-transform: capitalize;
+    letter-spacing: 0.04em;
+    line-height: 30px;
+}
+
+.addresses-page .grid__item .address .acc-name {
+    color: #8b714a;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.addresses-page .grid__item .address .addr p {
+    color: #787878;
+    margin-bottom: 0px;
+}
+
+.addresses-page .grid__item .address .list--inline .btn {
+    width: 130px;
+}
+
+.addresses-page .grid__item .address .list--inline .btn.address-edit-toggle {
+    margin-right: 7px;
+    color: #282828;
+    border: 1px solid #b9babb;
+    background: transparent;
+}
+
+.addresses-page .grid__item .address .list--inline .btn.address-edit-toggle:hover {
+    color: #f4a884;
+    border-color: #f4a884;
+}
+
+.addresses-page .grid__item .address .list--inline .btn.address-delete {
+    border-color: #f4a884;
+    background: #f4a884;
+    color: #fff;
+}
+
+.addresses-page .grid__item .address .list--inline .btn.address-delete:hover {
+    color: #b9babb;
+    border-color: #b9babb;
+    background: transparent;
+}
+
+@media (max-width: 1199px) {
+    .addresses-page .wrapper-header-login .title {
+        padding: 30px 0px 30px;
+    }
+
+    .addresses-page .section-header {
+        margin-top: 30px;
+    }
+
+    .addresses-page {
+        margin-bottom: 60px;
+    }
+
+    .login-register-page .login-an-account {
+        padding-right: 35px !important;
+    }
+
+    .wrapper-header-login .title {
+        font-size: 30px;
+        padding: 10px 0px 30px;
+    }
+
+    .login-register-page .grid {
+        padding: 50px 0px 90px;
+    }
+
+    .wrapper-header-login .breadcrumb {
+        background: transparent;
+        padding-top: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-register-page .create-an-account {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 767px) {
+    .breadcrumb-wrapper .breadcrumb-content{
+      text-align: center;
+    }
+    .addresses-page .grid__item .address .account-content {
+        max-width: 100%;
+    }
+
+    .account-page .grid {
+        margin-top: 15px;
+    }
+
+    .account-page .wrapper-header-login .title {
+        padding: 30px 0px 30px;
+    }
+
+    .account-page .grid .myaccount__account-details .account-content {
+        max-width: 100%;
+    }
+
+    .wrapper-header-login .breadcrumb {
+        padding-top: 20px;
+    }
+
+    .wrapper-header-login .title {
+        padding: 5px 0px 20px;
+        font-size: 26px;
+    }
+
+    .login-register-page .grid {
+        padding: 0px 0px 70px;
+    }
+
+    .login-register-page .create-an-account {
+        background: transparent;
+        padding: 0px;
+    }
+
+    .login-register-page .login-an-account {
+        margin-bottom: 30px;
+        padding-top: 15px;
+        padding-right: 0px !important;
+    }
+}
+
+@media (min-width: 750px) {
+    .login-register-page .create-an-account {
+        width: 47.4%;
+    }
+
+    .login-register-page .login-an-account {
+        width: 52.6%;
+        padding-right: 130px;
+    }
+}

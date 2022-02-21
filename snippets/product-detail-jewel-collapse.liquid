@@ -1,0 +1,486 @@
+
+
+{%- assign purity = variant.metafields.DI-GoldPrice.variant_additional_details.purity -%}
+{% if purity == '18K' %}
+	{%- assign gold_price = shop.metafields.DI-GoldPrice.addtional_shop_settings.gold_price_18k -%}
+{% endif %}
+{% if purity == '22K' %}
+  {%- assign gold_price = shop.metafields.DI-GoldPrice.addtional_shop_settings.gold_price_22k -%}
+{% endif %}
+{% if purity == '24K' %}
+  {%- assign gold_price = shop.metafields.DI-GoldPrice.addtional_shop_settings.gold_price_24k -%}
+{% endif %}
+{% if purity == '14K' %}
+  {%- assign gold_price = shop.metafields.DI-GoldPrice.addtional_shop_settings.gold_price_14k -%}
+{% endif %}
+{% if variant.metafields.DI-GoldPrice.variant_additional_details.metal_type == 'silver' %}
+	{%- assign gold_price = shop.metafields.DI-GoldPrice.addtional_shop_settings.silver_price -%}
+{% endif %}
+{% if variant.metafields.DI-GoldPrice.variant_additional_details.metal_type == 'platinum' %}
+	{%- assign gold_price = shop.metafields.DI-GoldPrice.addtional_shop_settings.platinum_price -%}
+{% endif %}
+
+{%- assign gold_total = gold_price | times : variant.metafields.DI-GoldPrice.variant_additional_details.metal_weight | times : 100 -%}
+{%- assign solitaire_total = variant.metafields.DI-GoldPrice.variant_additional_details.stone_charges | times : 100 -%}
+
+{%- assign total_charges = gold_total | times : variant.metafields.DI-GoldPrice.variant_additional_details.making_charges | divided_by: 100 | round : 3 -%}
+{%- assign discount_making_charge = 0 -%}
+{% if shop.metafields.DI-GoldPrice.addtional_shop_settings.making_charges_discount != null %}
+	{%- assign discount_making_charge = shop.metafields.DI-GoldPrice.addtional_shop_settings.making_charges_discount -%}
+{% endif %}
+
+{%- assign discount_charges = gold_total | times : discount_making_charge | divided_by: 100 | round : 3 -%}
+
+{%- assign making_charges = total_charges | minus : discount_charges -%}
+{%- assign gst = variant.price | minus : making_charges | minus : gold_total | minus : solitaire_total | round : 3 -%}
+
+<div class="row">
+  
+  <div id="details-middle">
+    <div id="details-middle-left-inner">
+      <div id="item-details">
+        <section id="section-item-details">
+          <h2 class="title">Product Details</h2>
+          <div class="content" style="display: none;"> 
+            <dl> 
+              <dt>Product Code</dt> 
+
+              <dd class="last" id="detail-product-code">{{variant.sku}}</dd> 
+            </dl> 
+            <dl> 
+              <dt>Height</dt> 
+			  {%- assign current_product_height = product.metafields.my_fields.product_height -%}
+              <dd class="last">{{current_product_height | round : 2}} mm</dd> 
+            </dl> 
+            <dl> 
+              <dt>Width</dt> 
+			  {%- assign current_product_width = product.metafields.my_fields.product_width -%}
+              <dd class="last">{{current_product_width | round : 2}} mm</dd> 
+            </dl>  
+          </div>
+        </section>
+        <section id="preSetSolitaire-details">
+          <h2 class="title expanded">
+            SYNTHETIC PINK CORRUNDUM DETAILS  
+          </h2>
+          <div class="panel"> 
+            <dl> 
+              <dt>No. Of Stones</dt> 
+
+              <dd class="last" id="synthetic_no">{{product.metafields.my_fields.stone_no}} Ct</dd> 
+            </dl> 
+            <dl> 
+              <dt>Shape</dt>
+
+              <dd class="last" id="synthetic_shape">{{product.metafields.my_fields.stone_shape}}</dd> 
+            </dl> 
+            <dl> 
+              <dt>Size</dt> 
+
+              <dd class="last" id="synthetic_size">{{product.metafields.my_fields.stone_size}}</dd> 
+            </dl> 
+            <dl> 
+              <dt>Setting Type</dt> 
+              <dd class="last" id="synthetic_type">{{product.metafields.my_fields.stone_type}}</dd> 
+            </dl>
+            
+          </div>
+
+        </section>
+        
+        <section id="metal-details">
+          <h2 class="title expanded">
+            METAL DETAILS  
+          </h2>
+          <div class="panel"> 
+            <dl> 
+              <dt>Type</dt> 
+              <dd class="last" id="metal_total_type">{{variant.metafields.DI-GoldPrice.variant_additional_details.metal_type}} {{variant.metafields.DI-GoldPrice.variant_additional_details.purity}}</dd> 
+            </dl> 
+            <dl> 
+              <dt>Weight(Approx)</dt> 
+              <dd class="last" id="metal_total_weight">{{variant.metafields.DI-GoldPrice.variant_additional_details.metal_weight | round : 2}} Gram</dd> 
+            </dl> 
+          </div>
+
+        </section>
+        <section id="section-price-breakup">
+          <h2 class="title expanded">
+            PRICE BREAKUP  
+          </h2>
+
+          <div class="panel"> 
+            <dl> 
+              <dt>Gold</dt> 
+              
+              <dd class="last" id="price_total_gold">{{gold_total | money }}</dd> 
+            </dl> 
+            <dl> 
+              <dt>Gemstone</dt> 
+              <dd class="last" id="price_total_solitaire">{{solitaire_total | money }}</dd> 
+            </dl> 
+            <dl> 
+              <dt>
+                {% if discount_making_charge != 0 and shop.metafields.DI-GoldPrice.addtional_shop_settings.show_discounted_prices %}
+                {{100 | minus :discount_making_charge}}% 
+              	{% endif %}
+                Making Charge
+              </dt> 
+              <dd class="last">
+               
+                <span id="price_total_charge">{{making_charges | money}}</span>
+                {% if discount_making_charge != 0 and shop.metafields.DI-GoldPrice.addtional_shop_settings.show_discounted_prices %}
+                / 
+                <span class="discount_charge line-through">{{total_charges | money}}</span> 
+              	{% endif %}
+              </dd>
+            </dl>
+            <dl> 
+              <dt>GST</dt> 
+              <dd class="last" id="price_gst">{{gst | money }}</dd> 
+            </dl> 
+            
+            <dl> 
+              <dt>Total</dt> 
+              <dd class="last">
+                {% if discount_making_charge != 0 and shop.metafields.DI-GoldPrice.addtional_shop_settings.show_discounted_prices %}
+                <span class="original_total line-through">{{variant.price | plus : discount_charges | money}}</span> / 
+                {% endif %}
+                <span id="price_total">{{variant.price | money}}</span>
+              </dd> 
+            </dl> 
+            
+          </div>
+
+        </section>
+        <section id="section-price-breakup">
+          <h2 class="title expanded">
+            TAGS  
+          </h2>
+          <div class="panel"> 
+            <p class="tags-list">
+              {% for tag in product.tags %}
+              <a href="/collections/all/{{ tag | handleize }}">
+                <span clsas="el-icon-tag">{{ tag }}</span>
+              </a>
+              {% endfor %}
+            </p>
+          </div>
+
+        </section>
+
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+    
+    #details-middle{
+      width:100%;
+    }
+    #details-middle #details-middle-left-inner {
+        background-color: white;
+        border: 1px solid #f0f0f0;
+        padding: 8px 16px 16px 16px;
+        font-family: Muli,Arial,sans-serif;
+    }
+    #details-middle #item-details section {
+        margin-bottom: 1px;
+    }
+    #details-middle h2.title {
+        background: #f9f9f9;
+        border-top: 1px solid #d1d1d1;
+        color: black;
+        font-size: 15px;
+        line-height: 21px;
+        font-weight: 600;
+        line-height: 20px;
+        letter-spacing: .1em;
+        margin: 0;
+        padding: 8px 8px 5px 8px;
+        text-transform: uppercase;
+    }
+    #details-middle #section-item-details h2.title {
+        background: 0;
+        color: black;
+        border: 0;
+    }
+    #details-middle #item-details #section-item-details .content {
+      display: block!important;
+      height: 100%!important;
+      border-top: 0;
+      overflow: hidden;
+  	}
+    #details-middle dl {
+        clear: both;
+        overflow: hidden;
+        border-bottom: 1px solid #f0f0f0;
+        margin: 0;
+        color: #4476b2;
+        padding: 3px 8px 5px 8px;
+        font-family: Muli,Arial,sans-serif;
+        font-size: 12px;
+        line-height: 18px;
+        line-height: 19px;
+    }
+    dl dt {
+        width: 50%;
+        float: left;
+        font-weight: 500;
+    }
+    #details-middle dl dd {
+        text-align: right;
+        letter-spacing: 1px;
+      	margin-bottom:0;
+    }
+    #details-middle dl dd, #details-middle dl dt {
+        width: 50%;
+        float: left;
+        font-weight: 500;
+    }
+    #details-middle h2.title i {
+        float: right;
+        font-size: 13px;
+        margin-right: 17px;
+        padding-top: 2px;
+        color: #4a4a4a;
+    }
+    
+
+    #details-middle h2.expanded:after {
+      content: '\002B';
+        color: #777;
+        float: right;
+        margin-right: 5px;
+        font-size: 19px;
+        font-weight: 400;
+        color: black;
+    }
+
+    #details-middle h2.active:after {
+      content: "\2212";
+    }
+
+    #details-middle #item-details section div.panel {
+   
+      background-color: white;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+    }
+  #details-middle table{
+    margin-bottom: 0 !important;
+  }
+  
+  	#details-middle table td {
+      border: none;
+      border-top: 1px solid #f0f0f0;
+      color: #4476b2;
+      padding: 3px 8px 5px 8px;
+      font-family: Muli,Arial,sans-serif;
+      font-size: 12px;
+      line-height: 18px;
+      line-height: 19px;
+  	}
+    #details-middle table tr>td:last-child {
+      text-align: right;
+    }
+</style>
+<script src="{{ 'jquery.min.js' | asset_url }}"></script>
+{% unless product == empty %}
+    <script type="application/json" id="ProductJson-{{ section.id }}">
+        {{ product | json }}
+    </script>
+{% endunless %}
+
+<script>
+  var acc = $('#item-details section h2.expanded');
+  var i;
+
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+
+      if($(this).next().hasClass('panel')){
+        var panel = this.nextElementSibling;
+      }else{
+        var panel = this.nextElementSibling.nextElementSibling;
+      }
+
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      } 
+    });
+  }
+  
+  //param : array
+  //return : variant ID
+  var getVariantByOption = function(options) {
+    var json_product = {{ product | json }};
+    for(var i = 0; i < json_product.variants.length; i++){
+      
+		var flag = true;
+        for(var j = 0; j < options.length; j++){
+          if(json_product.variants[i].options[options[j].index - 1] != options[j].value){
+            flag = false;
+          }
+        }
+        if(flag){
+         return json_product.variants[i];
+        
+        }
+    }
+    return null;
+    
+  }
+  
+  //param : product variant ID
+  //return : product variant metafields data of selected variant
+  var variantMetaData = function(variantID) {
+
+    var variants = {};
+    {% for variant in product.variants %}
+ 
+      variants[{{variant.id}}] = {{ variant.metafields.my_fields | json }};
+    {% endfor %}
+     return variants[variantID];
+  }
+  
+  //retrn product metafields
+  var productMetaData = function() {
+    var metaData = {{ product.metafields.my_fields | json }};
+    return metaData;
+  }
+  
+  //param : selected variant ID
+  //return : gold price editor app metadata of selected variant
+  var variantGoldData = function(variantID) {
+
+    var variants = {};
+    {% for variant in product.variants %}
+ 
+      variants[{{variant.id}}] = {{ variant.metafields.DI-GoldPrice.variant_additional_details | json }};
+    {% endfor %}
+     return variants[variantID];
+  }
+  
+  //param : selected variant ID
+  //return : gold price editor app goldData
+  var variantShopData = function(variantID) {
+    var variants = {};
+    variants = {{shop.metafields.DI-GoldPrice.addtional_shop_settings | json }};
+    
+     return variants;
+  }
+  
+  var updateProductDetail = function(variantData,metaData,goldData,shopData) {
+    //product code update
+    $('#detail-product-code').text(variantData.sku);
+    
+    
+    
+	//synthetic update
+    $('#synthetic_no').text(metaData.stone_no);
+    $('#synthetic_shape').text(metaData.stone_shape);
+    $('#synthetic_size').text(metaData.stone_size);
+    $('#synthetic_type').text(metaData.stone_type);
+    
+    
+    
+    //metal update
+    $('#metal_total_type').text(goldData.metal_type + ' ' + goldData.purity);
+    $('#metal_total_weight').text(goldData.metal_weight + ' ' + 'Gram');
+    
+    //price update
+    var product_purity = goldData.purity;
+    var price_total_gold = 0;
+    switch(product_purity) {
+      case "14K":
+        price_total_gold = parseFloat(goldData.metal_weight) * shopData.gold_price_14k;
+        break;
+      case "18K":
+        price_total_gold = parseFloat(goldData.metal_weight) * shopData.gold_price_18k;
+        break;
+      case "22K":
+        price_total_gold = parseFloat(goldData.metal_weight) * shopData.gold_price_22k;
+        break;
+      case "24K":
+        price_total_gold = parseFloat(goldData.metal_weight) * shopData.gold_price_24k;
+        break;
+    }
+    if(goldData.metal_type == 'silver'){
+      price_total_gold = parseFloat(goldData.metal_weight) * shopData.silver_price;
+    }
+    if(goldData.metal_type == 'platinum'){
+      price_total_gold = parseFloat(goldData.metal_weight) * shopData.platinum_price;
+    }
+    $('#price_total_gold').text(price_total_gold.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }));
+    
+    $('#price_total_solitaire').text(goldData.stone_charges.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }));
+    
+    var total_charges = (price_total_gold * goldData.making_charges / 100);
+    var discount_making_charge = 0;
+    if(shopData.making_charges_discount != null) {
+      discount_making_charge = shopData.making_charges_discount;
+    }
+    var discount_charges = price_total_gold * discount_making_charge / 100;
+    var making_charges = total_charges - discount_charges;
+    
+    var gst = parseFloat(variantData.price) / 100 - price_total_gold - parseFloat(goldData.stone_charges) - making_charges;
+    $('#price_total_charge').text(making_charges.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }));
+    $('#price_total').text((parseFloat(variantData.price) / 100).toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }));
+    $('#price_gst').text(gst.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }));
+    
+    $('span.original_total').text((parseFloat(variantData.price) / 100 + discount_charges).toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }));
+    $('span.discount_charge').text(total_charges.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }));
+    
+  }
+  
+  $('.dropdown-swatch').change(function(){
+    var options = [];
+    
+   
+    $('li.dropdown-swatch').each(function(index){
+      
+      var selectedValues = {};
+      
+      if($(this).find('input')[0].checked){
+        
+        selectedValues.index = $($(this).find('input')[0]).data('index2');
+        selectedValues.value = $($(this).find('input')[0]).val();
+        options.push(selectedValues);
+      }
+    })
+    
+    var variantData = getVariantByOption(options);
+    //var metaData = variantMetaData(variantData.id);
+    var metaData = productMetaData();
+    var goldData = variantGoldData(variantData.id);
+    var shopData = variantShopData(variantData.id);
+    updateProductDetail(variantData,metaData,goldData,shopData);
+  })
+
+</script>

@@ -1,0 +1,215 @@
+<style type="text/css">
+	{% if settings.font_header == 'shopify_fonts' %}
+	    {% assign header_font = settings.header_font_shopify | font_modify: 'weight', '400' %}
+	    {{ header_font | font_face | replace: '@font-face {', '@font-face { font-display: swap;' }}
+		{% assign font-stack-header = header_font.family | append: ',' | append: ' "Arial"' | append: ',' | append: ' "sans-serif"'  %}
+	{% else %}
+		{%- assign header_font = settings.fonts_name_hader -%}
+		{% assign font-stack-header = header_font | append: ',' | append: ' "Arial"' | append: ',' | append: ' "sans-serif"'  %}
+	{% endif %}
+
+	{% if settings.body_font == 'shopify_fonts' %}
+		{% assign heading_font = settings.heading_font_shopify | font_modify: 'weight', '400' %}
+		{{ heading_font | font_face | replace: '@font-face {', '@font-face { font-display: swap;' }}
+		{% assign font-stack-heading = heading_font.family | append: ',' | append: ' "Arial"' | append: ',' | append: ' "sans-serif"'  %}
+	{% else %}
+		{%- assign heading_font = settings.heading_fonts_name -%}
+		{% assign font-stack-heading = heading_font | append: ',' | append: ' serif'%}
+	{% endif %}
+
+	{% if settings.body_font == 'shopify_fonts' %}
+	  {% assign base_font = settings.base_font_shopify | font_modify: 'weight', '400' %}
+	  {{ base_font | font_face | replace: '@font-face {', '@font-face { font-display: swap;' }}
+	  {% assign font-stack-body = base_font.family | append: ',' | append: ' "Arial"' | append: ',' | append: ' "sans-serif"'  %}
+	{% else %}
+	  {% assign base_font = settings.body_fonts_name %}
+	  {% assign font-stack-body = base_font | append: ',' | append: ' "Arial"' | append: ',' | append: ' "sans-serif"'  %}
+	{% endif %}
+
+	:root{
+
+		--font_size: {{ settings.type_base_size }};
+		--font_size_plus1: {{ settings.type_base_size | plus: 1 }}px;
+		--font_size_plus1_75: {{ settings.type_base_size | plus: 1.75 }}px;
+		--font_size_plus2: {{ settings.type_base_size | plus: 2 }}px;
+		--font_size_plus3: {{ settings.type_base_size | plus: 3 }}px;
+		--font_size_plus4: {{ settings.type_base_size | plus: 4 }}px;
+		--font_size_plus5: {{ settings.type_base_size | plus: 5 }}px;
+		--font_size_plus6: {{ settings.type_base_size | plus: 6 }}px;
+		--font_size_plus8: {{ settings.type_base_size | plus: 8 }}px;
+		--font_size_plus10: {{ settings.type_base_size | plus: 10 }}px;
+		--font_size_plus12: {{ settings.type_base_size | plus: 12 }}px;
+		--font_size_plus18: {{ settings.type_base_size | plus: 18 }}px;
+		--font_size_plus28: {{ settings.type_base_size | plus: 28 }}px;
+		--font_size_minus1: {{ settings.type_base_size | minus: 1 }}px;
+		--font_size_minus2: {{ settings.type_base_size | minus: 2 }}px;
+		--font_size_minus3: {{ settings.type_base_size | minus: 3 }}px;
+		--font_size_time1_15: {{ settings.type_base_size | times: 1.15 }}px;
+		--font_size_time0_88: {{ settings.type_base_size | times: 0.88 }}px;
+		--font_size_time0_58: {{ settings.type_base_size | times: 0.58 }}px;
+		--font_size_time0_54: {{ settings.type_base_size | times: 0.54 }}px;
+		--background_1: {{ settings.btn_1_bg_color }};
+		--color_1 : {{ settings.btn_1_text_color }};
+		--border_1 : {{ settings.btn_1_border_color }};
+		--background_2: {{ settings.btn_2_bg_color }};
+	    --color_2 : {{ settings.btn_2_text_color }};
+	    --border_2 : {{ settings.btn_2_border_color }};
+	    --background_3: {{ settings.btn_3_bg_color }};
+	    --color_3 : {{ settings.btn_3_text_color }};
+		--border_3 : {{ settings.btn_3_border_color }};
+		--sold_out_text : {{ settings.sold_out_text }};
+		--bg_sold_out : {{ settings.bg_sold_out }};
+	    --color_url: {{ settings.color_url }};
+	    --color_url_hover:{{settings.color_url_hover}};
+	    --color_btn_primary: {{ settings.color_button }};
+		--color_btn_primary_text: {{ settings.color_button_text }};
+		--color_btn_primary_hover: {{ settings.color_button_hover }};
+		--color_btn_secondary_hover: {{ settings.color_button_secondary_hover }};
+		--color_btn_secondary_border_hover: {{ settings.color_button_secondary_border_hover }};
+		--color_btn_secondary_text_hover: {{ settings.color_button_secondary_text_hover }};
+		--font_stack_header: {{font-stack-header}};
+		--font_stack_body: {{font-stack-body}};
+		--font_stack_heading: {{font-stack-heading}};
+		--color_body_bg: {{ settings.color_body_bg }};
+	    --color_body_text:{{ settings.color_body_text }};
+	    --color_text_field_text:{{ settings.color_text_field_text }};
+	    --color_text_field: {{ settings.color_text_field }};
+	    --color_heading_text:{{ settings.color_heading_text }};
+	    --color_heading_url:{{ settings.color_heading_url }};
+	    --color_bg_alt: {{ settings.color_body_text | color_modify: 'alpha', 0.05 }};
+	    --opacity_image_overlay: {{ settings.image_overlay_opacity | divided_by: 100.00 }};
+	    --color_border_form: {{ settings.color_text_field_border }};
+	    --color_border: {{settings.border_color}};
+	    --svg_select_icon: #{'{{ "ico-select.svg" | asset_url }}'};
+	    --transition_drawer: all 0.45s cubic-bezier(0.29, 0.63, 0.44, 1);
+	    --color_btn_close_gp:{{settings.color_btn_close_gp}};
+	    --color_btn_bg_cookieMessage_hover:{{settings.color_btn_bg_cookieMessage_hover}};
+	    --color_cookieMessage:{{ settings.color_cookieMessage }};
+	    --color_btn_bg_cookieMessage:{{ settings.color_btn_bg_cookieMessage }};
+	    --color_btn_cookieMessage:{{ settings.color_btn_cookieMessage }};
+	    --color_btn_cookieMessage_hover:{{ settings.color_btn_cookieMessage_hover }};
+	    --color_notification2:{{ settings.color_notification2 }};
+	    --color_bg_notification2:{{ settings.color_bg_notification2 }};
+	    --color_button_close:{{settings.color_button_close}};
+	    --color_title_notification2: {{settings.color_title_notification2}};
+	    --color_title_border:{{settings.color_title_border}};
+	    --text_content_newsletter:{{settings.text_content_newsletter}};
+	    --background_newsletter:{{settings.background_newsletter}};
+	    --color_title_newsletter:{{settings.color_title_newsletter}};
+	    --color_product_button_text:{{ settings.color_product_button_text }};
+	    --color_product_button_border:{{ settings.color_product_button_border }};
+	    --color_product_button_bg:{{ settings.color_product_button_bg }};
+	    --color_product_button_text_hover:{{ settings.color_product_button_text_hover }};
+	    --color_product_button_border_hover:{{ settings.color_product_button_border_hover }};
+	    --color_product_button_bg_hover:{{ settings.color_product_button_bg_hover }};
+	    --color_bg_header_mb:{{settings.color_bg_header_mb}};
+	    --color_logo_mb:{{settings.color_logo_mb}};
+	    --color_logo:{{settings.color_logo}};
+	    --color_header_mb:{{settings.color_header_mb}};
+	    --color_item_cart:{{settings.color_item_cart}};
+	    --color_menu_lv1_mb:{{settings.color_menu_lv1_mb}};
+	    --hover_color_mnu_lv1_mb:{{settings.hover_color_mnu_lv1_mb}};
+	    --color_menu_lv2_mb:{{settings.color_menu_lv2_mb}};
+	    --hover_color_mnu_lv2_mb: {{settings.hover_color_mnu_lv2_mb}};
+	    --color_menu_lv3_mb:{{settings.color_menu_lv3_mb}};
+	    --hover_color_mnu_lv3_mb:{{settings.hover_color_mnu_lv3_mb}};
+	    --border_color_menu_mb:{{ settings.border_color_menu_mb }};
+	    --color_section_bg_gray:{{ settings.color_section_bg_gray }};
+	    --color_section_border:{{ settings.color_section_border }};
+	    --color_dropdownmenu:{{ settings.color_dropdownmenu }};
+	    --color_bg_announcement_bar:{{settings.color_bg_announcement_bar}};
+	    --color_announcement_bar:{{settings.color_announcement_bar}};
+	    --color_bg_header_middle:{{settings.color_bg_header_middle}};
+	    --color_bor_middle:{{settings.color_bor_middle}};
+	    --color_header_middle:{{settings.color_header_middle}};
+	    --color_bg_cart_countPill:{{settings.color_bg_cart_countPill}};
+	    --color_cart_countPill: {{settings.color_cart_countPill}};
+	    --color_bg_header_search: {{settings.color_bg_header_search}};
+	    --color_button_header:{{settings.color_button_header}};
+	    --bg_menu:{{settings.bg_menu}};
+	    --bg_dropdown_menu:{{settings.bg_dropdown_menu}};
+	    --font_size_mnu_lv1:{{settings.font_size_mnu_lv1}};
+	    --color_menu_lv1:{{settings.color_menu_lv1}};
+	    --hover_color_mnu_lv1:{{settings.hover_color_mnu_lv1}};
+	    --hover_color_mnu_lv1_modify:{{settings.hover_color_mnu_lv1 | color_modify: 'alpha', 0.85 }};
+	    --font_size_mnu_lv2:{{settings.font_size_mnu_lv2}};
+	    --color_menu_lv2:{{settings.color_menu_lv2}};
+	    --hover_color_mnu_lv2:color: {{settings.hover_color_mnu_lv2}};
+	    --color_product_vendor:{{settings.color_product_vendor}};
+	    --bg_lb_sale:{{settings.bg_lb_sale}};
+	    --color_lb_sale:{{settings.color_lb_sale}};
+	    --bg_lb_new:{{settings.bg_lb_new}};
+	    --color_lb_new:{{settings.color_lb_new}};
+	    --bg_lb_hot:{{settings.bg_lb_hot}};
+	    --color_lb_hot:{{settings.color_lb_hot}};
+	    --color_bg_header_middle_2_hp:{{settings.color_bg_header_middle_2_hp}};
+	    --color_bg_header_middle_2:{{settings.color_bg_header_middle_2}};
+	    --color_menu_lv3:{{settings.color_menu_lv3}};
+	    --font_size_mnu_lv3:{{settings.font_size_mnu_lv3}};
+	    --hover_color_mnu_lv3:{{settings.hover_color_mnu_lv3}};
+	    --background_footer_df:{{settings.background_footer_df}};
+	    --bor_footer_df:{{settings.bor_footer_df}};
+	    --footer_link_df_title:{{settings.footer_link_df_title}};
+	    --footer_link_df_text:{{settings.footer_link_df_text}};
+	    --footer_link_df_text_hover:{{settings.footer_link_df_text_hover}};
+	    --border_bootom_br_nl:{{settings.border_bootom_br_nl}};
+	    --footer_link_df_title:{{settings.footer_link_df_title}};
+	    --back_footer_bt_df:{{settings.back_footer_bt_df}};
+	    --footer_bottom_color_df:{{settings.footer_bottom_color_df}};
+	    --footer_bottom_color_df_modify:{{settings.footer_bottom_color_df | color_modify: 'alpha', 0.8 }};
+	    --back_footer_bg:{{settings.back_footer_bg}};
+	    --border_footer_col:{{settings.border_footer_col}};
+	    --color_newsletter_input_border:{{settings.color_newsletter_input_border}};
+	    --newsletter_input_bg:{{settings.newsletter_input_bg}};
+	    --color_newsletter_input:{{settings.color_newsletter_input}};
+	    --newsletter_button_bg:{{settings.newsletter_button_bg}};
+	    --color_newsletter_button:{{settings.color_newsletter_button}};
+	    --footer_social:{{settings.footer_social}};
+	    --footer_social_border:{{settings.footer_social_border}};
+	    --color_product_price:{{ settings.color_product_price }};
+	    --color_product_review_empty:{{ settings.color_product_review_empty }};
+	    --color_product_review:{{ settings.color_product_review }};
+	    --color_product_price_presale:{{ settings.color_product_price_presale }};
+	    --color_product_price_sale:{{ settings.color_product_price_sale }};
+	    --color_product_button_soldOut_text:{{ settings.color_product_button_soldOut_text }};
+	    --color_product_button_soldOut_border:{{ settings.color_product_button_soldOut_border }};
+	    --color_product_button_soldOut_bg:{{ settings.color_product_button_soldOut_bg }};
+	    --back_button_newsletter:{{settings.back_button_newsletter}};
+	    --color_button_newlet:{{settings.color_button_newlet}};
+	    --color_bg_announcement_bar_2:{{settings.color_bg_announcement_bar_2}};
+	    --color_announcement_bar_2:{{settings.color_announcement_bar_2}};
+	    --color_text:{{settings.color_text}};
+	    --background_count_item:{{settings.background_count_item}};
+	    --color_count_item:{{settings.color_count_item}};
+	    --color_footer_title:{{settings.color_footer_title}};
+	    --color_sale_badge_text:{{ settings.color_sale_badge_text }};
+	    --color_sale_badge_bg:{{ settings.color_sale_badge_bg }};
+	    --product_card_height_procent:{{ settings.product_card_height_procent }}%;
+	    --color_product_title:{{ settings.color_product_title }};
+	    --color_product_title_hover:{{ settings.color_product_title_hover }};
+	    --color_btt:{{ settings.color_btt }};
+	    --color_bg_btt:{{ settings.color_bg_btt }};
+	    --color_border_btt:{{ settings.color_border_btt }};
+	    --color_bg_cookieMessage:{{ settings.color_bg_cookieMessage }};
+	    --color_bg_cookieMessage_modify:{{ settings.color_bg_cookieMessage | color_modify: 'alpha', 0.9}};
+	    --color_text_hp:{{settings.color_text_hp}};
+	    --color_nav_2_hp:{{settings.color_nav_2_hp}};
+	    --footer_policy_br:{{settings.footer_policy_br}};
+	    --footer_policy_text:{{settings.footer_policy_text}};
+	    --footer_link_title:{{settings.footer_link_title}};
+	    --back_footer_bt:{{settings.back_footer_bt}};
+	    --footer_bottom_color:{{settings.footer_bottom_color}};
+	    --footer_link_br:{{settings.footer_link_br}};
+	    --footer_link_text:{{settings.footer_link_text}};
+	    --color_badge_text:{{ settings.color_badge_text }};
+	    --color_badge_bg:{{ settings.color_badge_bg }};
+	    --color_new_badge_text:{{ settings.color_new_badge_text }};
+	    --color_new_badge_bg:{{ settings.color_new_badge_bg }};
+	    --color_bundle_badge_text:{{ settings.color_bundle_badge_text }};
+	    --color_bundle_badge_bg:{{ settings.color_bundle_badge_bg }};
+	    --color_soldOut_badge_text:{{ settings.color_soldOut_badge_text }};
+	    --color_soldOut_badge_bg:{{ settings.color_soldOut_badge_bg }};
+	    --color_bestSellers_badge_text:{{ settings.color_bestSellers_badge_text }};
+	    --color_bestSellers_badge_bg:{{ settings.color_bestSellers_badge_bg }};
+	}
+</style>
